@@ -23,7 +23,6 @@ void APawnTank::BeginPlay()
 }
 
 // Called every frame
-
 void APawnTank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -75,5 +74,12 @@ void APawnTank::Rotate()
 void APawnTank::HandleDestruction()
 {
 	Super::HandleDestruction();
-	// Hide player - TODO Create new function to handle this
+	bIsPlayerAlive = false;
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
+}
+
+bool APawnTank::GetIsPlayerAlive()
+{
+	return bIsPlayerAlive;
 }
